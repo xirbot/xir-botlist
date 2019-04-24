@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="msapplication-TileColor" content="#00a1ff">
+<meta name="msapplication-TileImage" content="https://i.postimg.cc/qvMr4HL8/xirfavicon.png">
+<meta name="theme-color" content="#D49818">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Yerli-Yabancı Discord botlarının eklenildiği ve Discord botunuzu geliştirmeye yarayacak içeriklerin bulunduğu Discord developer platformu Kurallara uymayan ve discord sunucumuzdan banlanan kullanıcıların botları eklenmeyecektir.">
+<meta name="keywords" content="xir,xirbot,xirwebsite,xirbotadd,xirbotekle,botekle,bot, botlar, sunucu, discord, botlar Türkiye, Türkiye">
+<meta property="og:title" content="XiR Bots" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://xirbot.glitch.me" />
+<meta property="og:description" content="Yerli-Yabancı Discord botlarının eklenildiği ve Discord botunuzu geliştirmeye yarayacak içeriklerin bulunduğu Discord developer platformu Kurallara uymayan ve discord sunucumuzdan banlanan kullanıcıların botları eklenmeyecektir." />
+<meta property="og:image" content="<%=bot.user.avatarURL%>" />
+<meta property="og:site_name" content="XiR Bots">
+<meta itemprop="name" content="XiR Bots Add">
+<meta itemprop="description" content="Yerli-Yabancı Discord botlarının eklenildiği ve Discord botunuzu geliştirmeye yarayacak içeriklerin bulunduğu Discord developer platformu Kurallara uymayan ve discord sunucumuzdan banlanan kullanıcıların botları eklenmeyecektir.">
+<meta itemprop="image" content="https://i.postimg.cc/qvMr4HL8/xirfavicon.png">
+
+  <meta charset="UTF-8">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://bootswatch.com/4/cyborg/bootstrap.min.css" rel="stylesheet" />
+  
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdn.datatables.net/v/bs4/dt-1.10.16/cr-1.4.1/r-2.2.0/datatables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js" integrity="sha256-zG8v+NWiZxmjNi+CvUYnZwKtHzFtdO8cAKUIdB8+U9I="
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="/css/genel.css" />
+
+	<link rel="icon" href="https://i.postimg.cc/qvMr4HL8/xirfavicon.png">
+	<title>XiR Bots</title>
+  <style>
+    .cities {
+    background-color: black;
+    color: white;
+    margin: 20px;
+    padding: 20px;
+    } 
+		.navigation ul {
+			list-style-type: none;
+		}
+		.navigation ul a {
+			text-decoration: none;
+		}
+		.navigation ul li a {
+			display: block;
+		}
+		.navigation ul li {
+			float:left;
+			width:150px;
+			padding:8px;
+			background: white;
+			border-radius: 42px;
+			margin-right:8px;
+			color: white;
+			text-align: center;
+		}
+		.navigation ul li:hover {
+			background: Bisque;
+			border-radius: 0px;
+			transition-duration: 1.5s;
+		}
+		.navigation li ul {
+			display:none;
+			position:absolute;
+		}
+		.navigation li:hover ul {
+			display:block;
+			margin-top:9px;
+			margin-left:-49px;
+		}
+		.navigation li ul li {
+			clear:both;
+			display : block;
+			border-radius: 0px;
+			padding: 3px;
+			cursor: pointer;
+		}
+		.navigation li ul li a {
+			display: block;
+		}
+		.basarili {
+			background:url(http://4.bp.blogspot.com/-jeu83lGlWHs/T5uOBF3BUmI/AAAAAAAACn4/NbgkRV3RqNM/s1600/buton-sprite.png) #eefec2 no-repeat left;
+			background-position: left -11px;
+			height:60px;
+			line-height:60px;
+			padding:0 0 0 60px;
+			margin:0 0 10px 0;
+			border:1px solid #badc5d;
+			-webkit-border-radius: 3px;  
+			-moz-border-radius: 3px;  
+			border-radius: 3px;
+		}
+		.hata {
+			background:url(http://4.bp.blogspot.com/-jeu83lGlWHs/T5uOBF3BUmI/AAAAAAAACn4/NbgkRV3RqNM/s1600/buton-sprite.png) #ffe59d no-repeat left;
+			background-position: left -11px;
+			height:60px;
+			line-height:60px;
+			padding:0 0 0 60px;
+			margin:0 0 10px 0;
+			border:1px solid #c8b26f;
+			-webkit-border-radius: 3px;  
+			-moz-border-radius: 3px;  
+			border-radius: 3px;
+		}
+    .x a {
+      color:#999;
+    }
+    .x a:hover {
+      color:#fff;
+      background-color:transparent;
+    }
+	</style>
+  <script type="text/javascript">
+			function myFunction() {
+				var x = document.getElementById("myTopnav");
+				if (x.className === "topnav") {
+					x.className += " responsive";
+				} else {
+					x.className = "topnav";
+				}
+			}
+</script>
+</head>
+ 
+  <body>
+    
+     <a id="top" name="top"></a>
+<div class="hss"><a href="/"><img class="header-image" src="https://i.postimg.cc/XvnnhYmF/xirlogo.png"></a></div>
+<div class="topnav" id="myTopnav">
+      
+			<a href="/" class="active as"><i class="fa fa-home" aria-hidden="true"></i> Ana Sayfa</a>
+      <a href="/botlar" class="as" ><i class="fa fa-android" aria-hidden="true"></i> Botlar</a>
+      <a href="/sertifika" class="as"><i class="fa fa-diamond" aria-hidden="true"></i> Sertifika</a>
+			<a href="/hakkimizda"><i class="fa fa-info-circle" aria-hidden="true"></i> Hakkımızda</a>
+			<% if (!user) { %>
+      <a href="/giris"><i class="fa fa-sign-in" aria-hidden="true"></i> Giriş Yap</a></div>
+      <% } else { %>
+      <a href="/botekle"><i class="fa fa-plus-circle" aria-hidden="true"></i> Bot Ekle</a>
+      <% if (bot.yetkililer.includes(user.id) === true) { %>
+      <a href="/yetkili"><i class="fa fa-lock" aria-hidden="true"></i> Yetkili Paneli</a>
+      <a href="/kullanici/<%=user.id%>">
+      <img src="https://cdn.discordapp.com/avatars/<%=user.id%>/<%=user.avatar%>.png?size=32" width="25" height="25" class="d-inline-block align-middle rounded-circle" alt="Kullanıcı Avatar">
+      <%=user.username%>
+      </a>
+  <a href="/cikis"><i class="fa fa-sign-out" aria-hidden="true"></i> Çıkış Yap</a>
+
+      <% } %>
+      <% } %>	
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+				<i class="fa fa-bars"></i>
+			</a>
+		</div>
+</html>
+
+ <style>
+.header-image{
+ display: block;
+    float: left;
+    overflow: hidden;
+    padding: 0;
+    text-indent: -9999px;
+    width: 120px;
+   }
+.hss a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 13px 14px;
+	text-decoration: none;
+	font-size: 14px;
+}
+@keyframes xir-logo-animasyon {
+    16.65% {
+        transform: translateX(8px);
+    }
+
+    33.3% {
+        transform: translateX(-6px);
+    }
+
+    49.95% {
+        transform: translateX(4px);
+    }
+
+    66.6% {
+        transform: translateX(-2px);
+    }
+
+    83.25% {
+        transform: translateX(1px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+.header-image:hover{
+        animation-name: xir-logo-animasyon;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: 1;
+   }
+</style>
+<div class="container"></div>

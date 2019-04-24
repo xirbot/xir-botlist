@@ -1,0 +1,162 @@
+<%- include('ek/header', {bot, user, path}) %>
+
+<div class="container">
+<br>
+<h3 align="center" style="color:white">
+    <strong>Botlar
+    </strong></h3>
+  <div align="center"><p>Burada sistemdeki tüm botlar yer almaktadır. <br>(Botlar oy sayısına göre orantılı olarak sıralanmaktadır.)</p></div>
+  <br>
+    
+  <div align="center">
+
+    
+  </div>
+  <br><br><br>
+    
+  <div class="row">
+  
+   <% if (bot.ayar.has('botlar')) { %>
+  <% const sorted = Object.keys(bot.ayar.fetch('botlar')).sort((a, b) => { return (bot.ayar.fetch(`botlar.${b}.oy`) || 0) - (bot.ayar.fetch(`botlar.${a}.oy`) || 0) }) %>
+  <% const top = sorted.splice(0, Object.keys(bot.ayar.fetch('botlar')).length) %>
+  <% const map = top.map(x=>x) %>
+	<% for(var i = 0; i < Object.keys(bot.ayar.fetch('botlar')).length; i++) { %>
+  <% let idd = map[i] %>
+   <% if(bot.ayar.has(`botlar.${idd}.durum`) === true) { %>
+		<% if (bot.ayar.fetch(`botlar.${idd}.durum`) === "Onaylı") { %>
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card card-lg botcard" style="box-shadow:5px 5px 5px rgba(0,0,0,0.1);border-radius:12px;overflow:hidden;border-color:#2C2F33;width:16rem;">
+    <div value="<%=bot.useful.seg(bot.ayar.fetch(`botlar.${idd}.isim`), 5)%>" align="center" class="card-img">
+  
+      <center><center><a href="/bot/<%=idd%>"><img class="botresim" value="<%=bot.ayar.fetch(`botlar.${idd}.isim`)%>" src="<%=bot.ayar.fetch(`botlar.${idd}.avatar`)%>" style="width:50%" alt="<%=bot.ayar.fetch(`botlar.${idd}.isim`)%>"></center></a></center>
+        
+          <% if(bot.ayar.has(`botlar.${idd}.sertifika`) === true) { %>
+       
+       <br><a style="color:darkorange"><img src="https://i.postimg.cc/SxFNhhJS/xir-sertifika.png" width="30px" height="30px"> Sertifikalı</a><br>
+       <% } %>
+<br>
+       <div class="badge badge-primary"><strong style='color: white;'>Oy: </strong><span style='color:whitesmoke;text-transform: none;'><%=bot.ayar.fetch(`botlar.${idd}.oy`)||0%></span></div>
+                    <div class="badge badge-success"><%=bot.ayar.fetch(`botlar.${idd}.kutuphane`)%></div>
+                     
+          </div>
+      <div align="center" style="background-color:#E9E8E8" class="card-body">
+                               <div class="card-title">
+                                  <h4><a href="/bot/<%=idd%>" style="color:#222"><%=bot.useful.seg(bot.ayar.fetch(`botlar.${idd}.isim`), 5)%></a></h4>
+                                <h6 style="font-size:17px; color:#222">Sahibi: <%=bot.ayar.fetch(`botlar.${idd}.sahip`)%></h6></div>         
+                        
+                              <p class="card-text" style="color:#222"><%=bot.ayar.fetch(`botlar.${idd}.kisaaciklama`)%></p>
+                              <span id="etiketler"><%=bot.ayar.fetch(`botlar.${idd}.etiket`).join(' | ')%></span>
+                               <hr>
+        <h6 align="center"><div class="button_slide slide_right"><a href="/bot/<%=idd%>" style="font-size:20px; text-decoration:none; color:#23272A; "><i class="fa fa-eye" aria-hidden="true"></i> Görüntüle</a></div>
+                                <% if (user && bot.ayar.fetch(`botlar.${idd}.sahipid`) !== user.id) { %>
+<br>
+<br>
+          <div class="button_slide slide_right"><a href="https://discordapp.com/oauth2/authorize?client_id=<%=idd%>&scope=bot&permissions=8" target="popup" onclick="window.open('https://discordapp.com/oauth2/authorize?client_id=<%=idd%>&scope=bot&permissions=8','name','width=400,height=700')" style="font-size:20px; text-decoration:none; color:#23272A;">Davet Et</a></div></h6>
+                                <% } %>
+<br>
+<br>
+        <% if (user) { %>
+          <% if(bot.ayar.fetch(`botlar.${idd}.sahipid`) === user.id) { %>
+          <div class="button_slide slide_diagonal"><a href="/kullanici/<%=user.id%>/duzenle/<%=idd%>" style="font-size:20px; text-decoration:none; color:#23272A"><i class="fa fa-pencil-square" aria-hidden="true"></i> Düzenle</a></h6></div>
+          <% } %>
+        <% } %>
+                            </div>
+                       </div><br>
+    </div>
+      <% } %>
+    <% } %>
+   <% } %>
+   <% } else {%>
+   <center><h5 style="color:#222">
+     Sistemde hiç bot bulunmuyor.
+     </h5></center>
+   <% } %>
+   </div></div></div></div>
+
+<style>
+#etiketler {
+    font-size: 0.8em;
+    color:#222;
+  }
+.cardimg img {
+    transition: 1s ease;
+}
+.card-img-top {
+    width: 50%;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #D49818;
+}
+.botresim {
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #D49818;
+  }
+.card-img img:hover {
+-webkit-transform: scale(0.8);
+-ms-transform: scale(0.8);
+transform: scale(0.8);
+transition: 1s ease;
+}
+.button_slide {
+  color: #FFF;
+  border: 2px solid #D49818;
+  border-radius: 8px;
+  padding: 5px 5px;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #D49818;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.slide_down:hover {
+  box-shadow: inset 0 100px 0 0 #D49818;
+}
+
+.slide_right:hover {
+  box-shadow: inset 400px 0 0 0 #D49818;
+}
+
+.slide_left:hover {
+  box-shadow: inset 0 0 0 50px #D49818;
+}
+
+.slide_diagonal:hover {
+  box-shadow: inset 400px 50px 0 0 #D49818;
+}
+
+#outer {
+  width: 364px;
+  margin: 50px auto 0 auto;
+  text-align: center;
+}
+</style>
+<script>
+$(document).ready(function(){
+ $("#ara").keyup(function(){
+    var value = $(this).val().toLowerCase();
+    $(".col-12, .col-sm-6, .col-md-4 .card").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+  //etiket filtresi
+  $("#etiketselect").change(function(){
+    var value = $(this).val();
+    if (value === 'noneFilter') {
+      window.location.reload(true);
+      return
+    }
+    $(".col-12, .col-sm-6, .col-md-4 .card").filter(function(){
+      $(this).toggle($(this).text().indexOf(value) > -1)
+    });
+  })
+  ;
+});
+</script>
+  
+<% include ./ek/footer %>

@@ -1,0 +1,255 @@
+<%- include('ek/header', {bot, user, path}) %>
+<div class="container">
+<style> h3 { color:#fff; } p { color:#fff; } </style>
+	<div class="jumbotron">
+		<div align="center">
+   <img style="width:20%;border-radius:50%;" class="xir-logo" src="https://i.postimg.cc/QC2DjFfC/512xirlogo.jpg">
+      <h3 style="color:#fff">
+        Hakkımızda
+      </h3>
+		   <p style="font-size:15px; color:lightgrey">
+        XiR Özel komutları ve kodları ücretsiz sizlerle paylaşır.Mükemmel destek ekibi ile size hizmet vermekten memnuniyet duyuyor.Discord Sunucumuza gelerek komutlara ve kodlara ulaşabilirsiniz.
+      </p>
+<div class="footer-social-icons">
+    <ul class="social-icons">
+        <li><a href="https://youtube.com/c/MeliL" target="_blank" class="social-icon"> <i class="fa fa-youtube-play"></i></a></li>
+        <li><a href="https://instagram.com/melil.s" target="_blank" class="social-icon"> <i class="fa fa-instagram"></i></a></li>
+        <li><a href="https://fb.com/MeliL0fficial" target="_blank" class="social-icon"> <i class="fa fa-facebook"></i></a></li>
+        <li><a href="https://bitly.com/xirsdavet" target="_blank" class="social-icon"> <i class="fa fa-dashcube"></i></a></li>
+        <li><a href="https://github.com/Melil0" target="_blank" class="social-icon"> <i class="fa fa-github"></i></a></li>
+    </ul>
+</div>
+      <br>
+<button class="glow-on-hover" type="button">
+    <a href="https://bitly.com/xirsdavet" target="_blank" style="text-decoration:none;" ><i class="fa fa-user-plus"></i> Discord Sunucumuza Katıl </a>
+      </button>
+<br>
+<br>
+  <a href="https://discord.gg/GkzwCgM" target="_blank"><img src="https://discordapp.com/api/guilds/509839189714665492/embed.png?style=shield" alt=""></a>
+</div></div></div>
+</div>
+<style>
+
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css);
+.btn {
+ border-radius:20px;
+ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12),
+            0 2px 4px 0 rgba(0,0,0,0.08);
+  }
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+.xir-logo{
+  -webkit-transition:all 0.5s ease-out;
+  -moz-transition:all 0.5s ease-out;
+  -ms-transition:all 0.5s ease-out;
+  -o-transition:all 0.5s ease-out;
+  transition:all 0.5s ease-out;
+}
+
+.xir-logo:hover {
+  -webkit-transform:scale(.7);
+  -moz-transform:scale(.7);
+  -ms-transform:scale(.7);
+  -o-transform:scale(.7);
+  transform:scale(.7);
+}
+a {
+    text-decoration: none;
+    color: #fff;
+}
+p > a:hover{
+    color: #d9d9d9;
+    text-decoration:  underline;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin:  1% 0 1% 0;
+}
+._12 {
+    font-size: 1.2em;
+}
+._14 {
+    font-size: 1.4em;
+}
+ul {
+    padding:0;
+    list-style: none;
+}
+.footer-social-icons {
+    width: 350px;
+    display:block;
+    margin: 0 auto;
+}
+.social-icon {
+    color: #fff;
+}
+ul.social-icons {
+    margin-top: 10px;
+}
+.social-icons li {
+    vertical-align: top;
+    display: inline;
+    height: 100px;
+}
+.social-icons a {
+    color: #fff;
+    text-decoration: none;
+}
+.fa-facebook {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    border-radius: 5px;
+    background-color: #4E4E4E;
+}
+.fa-facebook:hover {
+    background-color: #3d5b99;
+}
+.fa-instagram {
+    padding:10px 12px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    border-radius: 5px;
+    background-color: #4E4E4E;
+}
+.fa-instagram:hover {
+background: #f09433;
+background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+}
+.fa-dashcube{
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    border-radius: 5px;
+    background-color: #4E4E4E;
+}
+.fa-dashcube:hover {
+    background-color: #7289DA;
+}
+.fa-youtube-play {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    border-radius: 5px;
+    background-color: #4E4E4E;
+}
+.fa-youtube-play:hover {
+    background-color: #e64a41;
+}
+.fa-github{
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    border-radius: 5px;
+    background-color: #4E4E4E;
+}
+.fa-github:hover {
+    background-color: #333;
+}
+.fa-linkedin {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+.fa-linkedin:hover {
+    background-color: #0073a4;
+}
+.fa-google-plus {
+    padding:10px 9px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+.fa-google-plus:hover {
+    background-color: #e25714;
+}
+</style>
+<% include ./ek/footer %>
