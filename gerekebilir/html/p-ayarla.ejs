@@ -1,0 +1,84 @@
+<%- include('ek/header', {bot, user, path}) %>
+<div class="container">
+  <form method="POST">
+  <div align="center" class="jumbotron" style="color:#fff">
+
+       <img src="https://cdn.discordapp.com/avatars/<%=user.id%>/<%=user.avatar%>.png?size=512" class="rounded-circle panell">
+       <h3 style="color:#fff"><%=user.username%>#<%=user.discriminator%></h3>
+       <h5 style="color:#fff">Profil Ayarlama</h5>
+
+    <div><i aria-hidden="true"></i>İsminiz: <a style="color:red">*</a></div>
+    <div>
+    <input type="text" style="text-align: center;" name="isim" id="isim" required="required">
+    </div>
+    <br>
+
+    <div><i aria-hidden="true"></i>Yaşınız: </div>
+    <div>
+    <input type="text" style="text-align: center;" name="yas" id="yas">
+    </div>
+    <br>
+
+    <div><i aria-hidden="true"></i>Biyografi:</div>
+    <div>
+    <input type="text" style="text-align: center;" name="biyo" id="biyo">
+    </div>
+</div>
+    <br>
+
+    <div><i aria-hidden="true"></i>Favori kodlama diliniz:</div>
+    <div>
+     <div class="select-style">
+        <select id="favlib" name="favlib" required="required">
+            <option disabled selected>Favori kodlama dilinizi seçiniz.</option>
+            <option value="Yok">Yok</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Node.JS">Node.JS</option>
+            <option value="HTML">HTML</option>
+            <option value="Lua">Lua</option>
+            <option value="PHP">PHP</option>
+            <option value="Python">Python</option>
+            <opiton value="Java">Java</opiton>
+            <option value="C++">C++</option>
+            <option value="C#">C#</option>
+            <option value="Ruby">Ruby</option>
+        </select>
+    </div>
+</div>
+    <br>
+
+    <div><i aria-hidden="true"></i>Bildiğiniz kodlama dilleri:</div>
+    <div>
+    <div class="select-style">
+            <select id="libs" name="libs" required="required" multiple>
+                <option disabled selected>Bildiğiniz kodlama dillerini seçiniz.</option>
+                <option value="Yok">Yok</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Node.JS">Node.JS</option>
+                <option value="HTML">HTML</option>
+                <option value="Lua">Lua</option>
+                <option value="PHP">PHP</option>
+                <option value="Python">Python</option>
+                <opiton value="Java">Java</opiton>
+                <option value="C++">C++</option>
+                <option value="C#">C#</option>
+                <option value="Ruby">Ruby</option>
+            </select>
+        </div>
+      <p>
+            <a style="color:red">Not: </a><a style="color:lightgrey">birden çok etiket seçilebilir. Bilgisayarda iseniz <i>ctrl</i> tuşuna basılı tutarak seçiniz etiketleri.</a>
+            </p>
+    </div>
+    <br>
+
+    <h6 style="color:red">
+            Yanında * olanlar zorunlu, olmayanlar ise isteğe bağlıdır.
+          </h6>
+       
+        <div style="width: 100%; text-align: center; margin-top: 20px;">
+        <button style="border-radius: 100px; background-color:#00a1ff" type="submit" class="btn btn-primary"><i class="fa fa-save fa-fw"></i> Kaydet<i aria-hidden='true'></i></button>
+    </div>
+</div>
+    </form>
+</div></div>
+<% include ./ek/footer %>

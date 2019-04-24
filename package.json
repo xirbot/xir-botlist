@@ -1,0 +1,56 @@
+{
+  "//1": "describes your app and its dependencies",
+  "//2": "https://docs.npmjs.com/files/package.json",
+  "//3": "updating this file will download and update your packages",
+  "name": "hello-express",
+  "version": "0.0.1",
+  "description": "XiR Bots Add",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cheerio": "^0.22.0",
+    "discord.js": "^11.4.2",
+    "discordbotlari-api": "^0.0.14",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "fs": "^0.0.2",
+    "helmet": "^3.15.0",
+    "highlight.js": "^9.13.1",
+    "html-tags": "^2.0.0",
+    "level-session": "^0.3.4",
+    "level-session-store": "^2.1.0",
+    "marked": "^0.5.2",
+    "moment": "^2.23.0",
+    "moment-duration-format": "^2.2.2",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.3.16",
+    "ms": "^2.1.1",
+    "mysql": "^2.16.0",
+    "node-fetch": "^2.3.0",
+    "node-superfetch": "^0.1.9",
+    "passport": "^0.4.0",
+    "passport-discord": "^0.1.3",
+    "path": "^0.12.7",
+    "quick.db": "^7.0.0-b16",
+    "request": "^2.88.0",
+    "url": "^0.11.0",
+    "useful-tools": "^0.0.33",
+    "window": "^4.2.5"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/hello-express"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}

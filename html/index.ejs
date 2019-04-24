@@ -1,0 +1,148 @@
+<%- include('ek/header', {bot, user, path}) %>
+<div class="container">
+  
+	 <div class="jumbotron">
+		<div align="center">
+			<img src="https://i.postimg.cc/QC2DjFfC/512xirlogo.jpg" width="180px" height="180px" class="d-inline-block align-top rounded-circle" alt=""><br><br>
+      <h3><b>XiR Bots Add</b></h3>
+					<p style="font-size:15px; color:lightgrey">Yerli-Yabancı Discord botlarının eklenildiği ve Discord botunuzu geliştirmeye yarayacak içeriklerin bulunduğu Discord developer platformu<br>Kurallara uymayan ve discord sunucumuzdan banlanan kullanıcıların botları eklenmeyecektir.</p><br>
+					<a href="/hakkimizda" class="btn btn-default" style="background-color:#D49818; color:#fff"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Detaylı bilgi</a>
+   <br>
+<br>
+<h5 style="font-weight:bold;">Glitch Discord Bot Yapımı</h5>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LosLPMZiDqc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    </div>
+
+  <h3 align="center" style="color:#7289DA">
+    <strong>Sertifikalı Botlar
+    </strong></h3>
+  <div align="center"><p>Burada sistemdeki sertifikalı botlar yer almaktadır.<br>Tüm botları <a href="/botlar">buraya tıklayarak</a> görebilirsiniz.<br>(Botlar oy sayısına göre orantılı olarak sıralanmaktadır.)</p></div>
+  
+  
+  <div class="row">
+    
+    <% if (bot.ayar.has('botlar')) { %>
+  <% const sorted = Object.keys(bot.ayar.fetch('botlar')).sort((a, b) => { return (bot.ayar.fetch(`botlar.${b}.oy`) || 0) - (bot.ayar.fetch(`botlar.${a}.oy`) || 0) }) %>
+  <% const top = sorted.splice(0, Object.keys(bot.ayar.fetch('botlar')).length) %>
+  <% const map = top.map(x=>x) %>
+	<% for(var i = 0; i < Object.keys(bot.ayar.fetch('botlar')).length; i++) { %>
+  <% let idd = map[i] %>
+   <% if(bot.ayar.has(`botlar.${idd}.durum`) === true) { %>
+    <% if (bot.ayar.fetch(`botlar.${idd}.durum`) === "Onaylı") { %>
+      <% if (bot.ayar.has(`botlar.${idd}.sertifika`) === true) { %>
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="card card-lg botcard" style="box-shadow:5px 5px 5px rgba(0,0,0,0.1);border-radius:12px;overflow:hidden;border-color:#2C2F33;width:16rem;">
+     <div align="center" class="card-img">
+         <a href="/bot/<%=idd%>"><img src="<%=bot.ayar.fetch(`botlar.${idd}.avatar`)%>" class="card-img-top" alt="Bot Avatar"></a>
+       <br><br><a style="color:limegreen"><img src="https://i.postimg.cc/SxFNhhJS/xir-sertifika.png" width="30px" height="30px"> Sertifikalı</a><br>   
+       <div class="badge badge-primary"><strong style='color: white;'>Oy: </strong><span style='color:whitesmoke;text-transform: none;'><%=bot.ayar.fetch(`botlar.${idd}.oy`)||0%></span></div>
+                    <div class="badge badge-success"><%=bot.ayar.fetch(`botlar.${idd}.kutuphane`)%></div>
+                            </div>
+                            <div align="center" style="background-color:#fff" class="card-block">
+                                <div class="card-title">
+                                  <h4><a href="/bot/<%=idd%>" style="color:#222"><%=bot.useful.seg(bot.ayar.fetch(`botlar.${idd}.isim`), 5)%></a></h4>
+                                <h6 style="font-size:17px; color:#222">Sahibi: <%=bot.ayar.fetch(`botlar.${idd}.sahip`)%></h6></div>         
+                        
+                              <p class="card-text" style="color:#222"><%=bot.ayar.fetch(`botlar.${idd}.kisaaciklama`)%></p>
+                               <hr>
+                              <h6 align="center"><div class="button_slide slide_right"><a href="/bot/<%=idd%>" style="font-size:20px; text-decoration:none; color:#23272A;">Görüntüle</a></div>
+                                <div class="button_slide slide_right"><a href="https://discordapp.com/oauth2/authorize?client_id=<%=idd%>&scope=bot&permissions=8" target="popup" onclick="window.open('https://discordapp.com/oauth2/authorize?client_id=<%=idd%>&scope=bot&permissions=8','name','width=400,height=700')" style="font-size:20px; text-decoration:none; color:#23272A;">Davet Et</a></div></h6>
+                            </div>
+                       </div><br>
+      </div>
+      <% } %>
+    <% } %>
+    <% } %>
+   <% } %>
+    <% } else { %>
+    <div align="center">
+      <h5 align="center" style="color:#222">
+      Sistemde hiç bot bulunmuyor.
+      </h5>
+    </div>
+    <% } %>
+</div></div></div>
+<style>
+.cardimg img {
+    transition: 1s ease;
+}
+.card-img-top {
+    width: 50%;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #D49818;
+}
+.botresim {
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #D49818;
+  }
+.card-img img:hover {
+-webkit-transform: scale(0.8);
+-ms-transform: scale(0.8);
+transform: scale(0.8);
+transition: 1s ease;
+}
+.button_slide {
+  color: #FFF;
+  border: 2px solid #D49818;
+  border-radius: 8px;
+  padding: 5px 5px;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #D49818;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.slide_down:hover {
+  box-shadow: inset 0 100px 0 0 #D49818;
+}
+
+.slide_right:hover {
+  box-shadow: inset 400px 0 0 0 #D49818;
+}
+
+.slide_left:hover {
+  box-shadow: inset 0 0 0 50px #D49818;
+}
+
+.slide_diagonal:hover {
+  box-shadow: inset 400px 50px 0 0 #D49818;
+}
+
+#outer {
+  width: 364px;
+  margin: 50px auto 0 auto;
+  text-align: center;
+}
+</style>
+<script>
+$(document).ready(function(){
+ $("#ara").keyup(function(){
+    var value = $(this).val().toLowerCase();
+    $(".col-12, .col-sm-6, .col-md-4 .card").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+  //etiket filtresi
+  $("#etiketselect").change(function(){
+    var value = $(this).val();
+    if (value === 'noneFilter') {
+      window.location.reload(true);
+      return
+    }
+    $(".col-12, .col-sm-6, .col-md-4 .card").filter(function(){
+      $(this).toggle($(this).text().indexOf(value) > -1)
+    });
+  })
+  ;
+});
+</script>
+<% include ./ek/footer %>

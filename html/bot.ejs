@@ -1,0 +1,100 @@
+<%- include('ek/header', {bot, user, path}) %>
+
+<div class="post post-single">
+                  <br>
+                        <div class="post-meta">
+                            <div align="center"><span class="yapimci"><i class="fa fa-gavel" aria-hidden="true"></i> <strong>Yapımcı: </strong><a href="/kullanici/<%=bot.ayar.fetch(`botlar.${id}.sahipid`)%>"><%=bot.ayar.fetch(`botlar.${id}.sahip`)%></a></span><a style="color:lightgrey;font-weight:bold;">   |   </a>
+                            <span class="oy"><a class="oy"><i class="fa fa-check-circle" aria-hidden="true"></i> <%=bot.ayar.fetch(`botlar.${id}.oy`) || 0%> Oy</a></span>
+                        <% if(bot.ayar.has(`botlar.${id}.sertifika`) === true) { %>
+                              <a style="color:lightgrey;font-weight:bold;">  | </a><span><img src="https://i.postimg.cc/SxFNhhJS/xir-sertifika.png" width="20px" height="20px"> <a style="color:limegreen">Sertifikalı</a></span>
+                         <% } %>
+                          </div>
+                        </div><br>
+                        <div class="post-thumbnail">
+                            <div align="center"><img src="<%=bot.ayar.fetch(`botlar.${id}.avatar`)%>"
+                                width="200" height="200" class="botavatar"><h3 class="botisim"><%=bot.ayar.fetch(`botlar.${id}.isim`)%></h3>
+                              <h6 class="kisaaciklama"><%=bot.ayar.fetch(`botlar.${id}.kisaaciklama`)%></h6></div>
+ <div class="shapeback"></div>
+                          
+        <div alig ="left">
+          <button class="botprefix btn btn-default">Prefix: <%=bot.ayar.fetch(`botlar.${id}.prefix`)%></button>
+          
+      <%if (bot.ayar.has(`botlar.${id}.destek`)){%>
+                 <a href="<%=bot.ayar.fetch(`botlar.${id}.destek`)%>"><button class="btn btn-warning destek">Destek Sunucusu</button></a>
+            <%} %>
+          
+          <%if (bot.ayar.has(`botlar.${id}.site`)){%>
+                 <a href="<%=bot.ayar.fetch(`botlar.${id}.site`)%>"><button class="btn btn-warning website">Web Sitesi</button></a>
+            <%} %>
+          
+          <%if (bot.ayar.has(`botlar.${id}.github`)){%>
+                 <a href="<%=bot.ayar.fetch(`botlar.${id}.github`)%>"><button class="btn btn-warning github">Github</button></a>
+            <%} %>
+          </div>
+<br>
+      <div align="center">                    
+  <% if (!user) { %>
+        <a href="/giris"><button class="notoy">Oy Verebilmek İçin Giriş Yapmalısın <i class="fa fa-lock"></i></button></a>
+                    <% } else { %>
+        <a href="/bot/<%=id%>/oyver"><button id="oy" href="/bot/<%=id%>/oyver" class="btn btn-primary oyver" type="sumbit"><i aria-hidden="true"></i><i class="fa fa-check-circle" aria-hidden="true"></i> Oy Ver</button></a>
+                      <% } %><br>
+            <br>
+          <a href="https://discordapp.com/oauth2/authorize?client_id=<%=id%>&scope=bot&permissions=8" target="popup" onclick="window.open('https://discordapp.com/oauth2/authorize?client_id=<%=id%>&scope=bot&permissions=8','name','width=400,height=700')"><button class="btn btn-success davetet"><i aria-hiddden="true"></i><i class="fa fa-plus" aria-hidden="true"></i> Davet Et</button></a>
+        <a href="/bot/<%=id%>/rapor"><button class="btn btn-danger rapor"><i aria-hidden="true"></i><i class="fa fa-flag" aria-hidden="true"></i> Rapor Et</button></a>
+        
+          <% if (user) { %>
+          <% if(bot.ayar.fetch(`botlar.${id}.sahipid`) === user.id) { %>
+          <a href="/kullanici/<%=user.id%>/duzenle/<%=id%>"><button class="btn btn-primary duzenle"><i aria-hiddden="true"></i><i class="fa fa-pencil" aria-hidden="true"></i> Düzenle</button></a>
+        <a href="/kullanici/<%=user.id%>/sil/<%=id%>"><button class="sil btn btn-danger"><i aria-hidden="true"></i><i class="fa fa-trash" aria-hidden="true"></i> Sil</button></a>
+          <% } %>
+        <% } %>
+                      
+                </div>  
+  </div>
+  <br>
+<center><p style="font-size:30px;color:white;">Bot Açıklaması</p></center>
+  <div class="uzunaciklama" class="jimbotron" align="center"><br>
+    <% if (bot.ayar.has(`botlar.${id}.uzunaciklama`) || bot.ayar.fetch(`botlar.${id}.uzunaciklama`) !== undefined || bot.ayar.fetch(`botlar.${id}.uzunaciklama`) !== null) { %>
+<% var xx %>
+<% for (var ii = 0; ii < bot.tags.length; ii++) { %>
+    <% if(bot.ayar.fetch(`botlar.${id}.uzunaciklama`).includes(bot.tags[ii]) === false) {%>
+    <% xx = false %>
+ <% } %>
+    <% if (bot.ayar.fetch(`botlar.${id}.uzunaciklama`).includes(bot.tags[ii]) === true) { %>
+    <% xx = true %>
+    <% } %>
+<% } %>
+<% if (xx === false) { %>
+  <p><%=bot.ayar.fetch(`botlar.${id}.uzunaciklama`)%></p>
+<% } else if (xx === true) { %>
+    <% let $ = bot.htmll.load(bot.ayar.fetch(`botlar.${id}.uzunaciklama`)) %>
+  <%- $.html() %>
+    <% } %>
+    
+    <% } else { %>
+    <p>Bir Discord botu işte!</p>
+    <% } %>
+    
+  <br></div>
+        
+        </div><br>
+          <div class="post-actions">
+           <center><p style="font-size:30px;color:white;">Etiketler</p></center>
+                  <div class="post-tags">
+                    <div align="center">
+                      <%if(Array.isArray(bot.ayar.fetch(`botlar.${id}.etiket`)) === false) {%>
+                      <span><a class="atag" style="margin:8px"><%=bot.ayar.fetch(`botlar.${id}.etiket`)%></a></span>
+                      <% } else { %>
+                      <% for(var xx = 0; xx < bot.ayar.fetch(`botlar.${id}.etiket`).length; xx++) {%>
+                      <span><a class="atag" style="margin:8px"><%=bot.ayar.fetch(`botlar.${id}.etiket`)[xx]%></a></span>
+                    <% }%>
+                      <% }%>
+                    </div>
+                   </div>
+              </div>
+      </div>
+</div>
+<style>
+
+</style>
+<% include ./ek/footer %>

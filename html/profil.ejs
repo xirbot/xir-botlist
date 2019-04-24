@@ -1,0 +1,118 @@
+<%- include('ek/header', {bot, user, path}) %>
+<div class="container">
+  <div align="center" class="jumbotron">
+
+       <div class="uyeprofil" ><img src="https://cdn.discordapp.com/avatars/<%=kisi.id%>/<%=kisi.avatar%>.png?size=512" class="rounded-circle panell"></div>
+       <h3 style="color:#fff"><%=kisi.username%>#<%=kisi.discriminator%></h3>
+  </div>
+
+  <h3 style="color:lightgrey;font-size: 1.5rem;"><%=kisi.username%> Adlı Kullanıcının Botları</h3>
+<br>
+  <% if (bot.ayar.has('botlar')) { %>
+    <% if (bot.ayar.has(`kbotlar.${kisi.id}`)) { %>   
+
+<%for(var i = 0; i < Object.keys(bot.ayar.fetch('botlar')).length; i++) {%>
+<% var idd = Object.keys(bot.ayar.fetch('botlar'))[i] %>
+<%  if (bot.ayar.fetch(`botlar.${idd}.sahipid`) === kisi.id) { %>
+<div class="col-12 col-sm-6 col-md-4">
+     <div class="card card-lg botcard" style="box-shadow:5px 5px 5px rgba(0,0,0,0.1);border-radius:12px;overflow:hidden;border-color:#2C2F33;width:16rem;">
+  <div align="center" class="card-img">
+      <a href="/bot/<%=idd%>"><img src="<%=bot.ayar.fetch(`botlar.${idd}.avatar`)%>" class="card-img-top" alt="Bot Avatar"></a>
+<br>
+    <% if (bot.ayar.has(`botlar.${idd}.sertifika`) === true) { %>
+    <br><br><a style="color:limegreen"><img src="https://i.postimg.cc/SxFNhhJS/xir-sertifika.png" width="30px" height="30px"> Sertifikalı</a><br>
+    <% } %>
+   <%  if(bot.ayar.fetch(`botlar.${idd}.durum`) === 'Beklemede' || !bot.ayar.has(`botlar.${idd}.durum`)) { %>
+    <div class="badge badge-warning">Beklemede</div>
+    <% } %>
+
+    <%  if(bot.ayar.fetch(`botlar.${idd}.durum`) === 'Reddedilmiş') { %>
+    <div class="badge badge-danger">Reddedilmiş</div>
+    <% } %>
+    <%  if(bot.ayar.fetch(`botlar.${idd}.durum`) === 'Onaylı') { %>
+    <div class="badge badge-success">Onaylanmış</div>
+    <% } %>
+
+    <div class="badge badge-primary"><strong style='color: white;'>Oy: </strong><span style='color:whitesmoke;text-transform: none;'><%=bot.ayar.fetch(`botlar.${idd}.oy`)||0%></span></div>
+                 <div style="background-color:grey; color:#fff" class="badge badge-default"><%=bot.ayar.fetch(`botlar.${idd}.kutuphane`)%></div>
+                         </div>
+                          <div align="center" style="background-color:#fff" class="card-block">
+                             <div class="card-title">
+                               <h4><a href="/bot/<%=idd%>" style="color:#222"><%=bot.useful.seg(bot.ayar.fetch(`botlar.${idd}.isim`), 5)%></a></h4>
+                             <h6 style="font-size:17px; color:#222">Sahibi: <%=bot.ayar.fetch(`botlar.${idd}.sahip`)%></h6></div>         
+                     
+                           <p class="card-text" style="color:#222"><%=bot.ayar.fetch(`botlar.${idd}.kisaaciklama`)%></p>
+                            <hr>
+                            <div class="button_slide"><h6 align="center"><a href="/bot/<%=idd%>" style="font-size:20px; text-decoration:none; color:white; ">Görüntüle</a></div>
+                              <% if (bot.ayar.fetch(`botlar.${idd}.sahipid`) !== user.id) { %>
+                                <a href="https://discordapp.com/oauth2/authorize?client_id=<%=idd%>&scope=bot&permissions=8" style="font-size:20px; color:#222; background-color:#fff" target="popup" onclick="window.open('https://discordapp.com/oauth2/authorize?client_id=<%=id%>&scope=bot&permissions=8','name','width=400,height=700')">Davet Et</a></h6>
+                                <% } %>
+        <% if (user) { %>
+          <% if(bot.ayar.fetch(`botlar.${idd}.sahipid`) === user.id) { %>
+
+          <div class="button_slide"><a href="/kullanici/<%=user.id%>/duzenle/<%=idd%>" style="font-size:20px; text-decoration:none; color:white; "> Düzenle</a></h6></div>
+          <% } %>
+        <% } %>
+<br>
+<br>
+                            </div>
+                    </div><br>
+</div>
+<% } %>
+<% } %>
+</div>
+   
+   <% } else if (!bot.ayar.has(`kbotlar.${user.id}`)) {%>
+        <h5 style="color:#222">
+          Sistemde Kullanıcıya ait bot bulunamadı.
+   </h5>
+   <% } %>
+   <% } else if (!bot.ayar.has('botlar')) {%>
+        <h5 style="color:#222">
+          Sistemde hiç bot bulunmuyor.
+   </h5>
+   <% } %>
+<style>
+.card-img-top {
+    width: 50%;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #D49818;
+}
+.button_slide {
+  color: #FFF;
+  border: 2px solid #D49818;
+  background-color:#D49818;
+  border-radius: 8px;
+  padding: 1px 1px;
+  display: inline-block;
+  font-family:'Poppins', sans-serif;
+  font-size: 4px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #D49818;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+.button_slide:hover{
+   background-color:#b27d0e;
+  }
+
+#outer {
+  width: 364px;
+  margin: 50px auto 0 auto;
+  text-align: center;
+}
+.jumbotron{
+background-image: url(https://i.postimg.cc/15TN17rQ/xirprofilback.jpg);
+  }
+.card-img-top{
+width:50%
+  }
+.uyeprofil img:hover{
+transform: rotateY(180deg);
+  }
+</style>
+</div></div>
+<% include ./ek/footer %>

@@ -1,0 +1,27 @@
+<%- include('ek/header', {bot, user, path}) %>
+	<div align="center">
+		<h2 style="color: #222;">Bot Silme</h2>
+	
+    <div class="jumbotron">
+ <form method="post">
+   <style> h3 { color:#fff; } p { color:#fff } </style> 
+   <div style="color: #222;" align="center">
+		
+     <h3>
+       Emin Misin?
+     </h3>
+     
+     <p>
+      Gerçekten botunu sistemimizden silmek istiyorsan <a style="color:red">Sil</a> butonuna bas.
+       <br><br>
+       <i><a style="color:red">Not:</a> Sistemden botunuzu sildiğinizde tekrar aynı botu veya başka bir botunuzu sisteme eklemenizde herhangi bir sıkıntı olmaz. </i>
+     </p>
+    
+				<div align="center" style="width: 100%; text-align: left; margin-top: 20px;">
+					<center><button id="botid" name="botid" value="<%=id%>" style="border-radius: 100px" type="submit" class="btn btn-danger"><i class="fa fa-remove fa-fw"></i> Sil<i aria-hidden='true'></i></button>
+          </center></div>
+		</div>
+  </form>
+    </div></div>
+	</div>
+<% include ./ek/footer %>

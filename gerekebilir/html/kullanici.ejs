@@ -1,0 +1,23 @@
+<%- include('ek/header', {bot, user, path}) %>
+<div class="container">
+  <div align="center" class="jumbotron">
+    <%
+    var txt = `${kisi.username}#${kisi.discriminator} adlı kullanıcının profilini görmek için tıkla`
+    if (user) {
+      if (user.id === kisi.id) {
+        var txt = `Profilini görmek için tıkla`
+      }
+    }
+    %>
+       <img src="https://cdn.discordapp.com/avatars/<%=kisi.id%>/<%=kisi.avatar%>.png?size=512" class="rounded-circle panell">
+       <h5 style="color:#fff"><%=kisi.username%>#<%=kisi.discriminator%></h5>
+       <a href="/kullanici/<%=kisi.id%>/profil" class="btn btn-default" style="background-color:#333; color:#fff"><%=txt%></a>
+       <% if (user) { %>
+       <% if (user.id === kisi.id) { %>
+       <a href="/kullanici/<%=kisi.id%>/panel" class="btn btn-default" style="background-color:#333; color:#fff">Panele gitmek için tıkla</a>
+       <% } %>
+       <% } %>
+  </div>
+</div>
+</div></div>
+<% include ./ek/footer %>

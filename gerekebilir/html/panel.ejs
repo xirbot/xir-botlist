@@ -1,0 +1,69 @@
+<%- include('ek/header', {bot, user, path}) %>
+<div class="container">
+  
+  <div align="center" class="jumbotron">
+       <img src="https://cdn.discordapp.com/avatars/<%=user.id%>/<%=user.avatar%>.png?size=512" class="rounded-circle panell">
+       <h5 style="color:#fff"><%=user.username%>#<%=user.discriminator%></h5>
+      <h6 style="color:#fff">Botların;</h6>
+  </div>
+  
+  <% if (bot.ayar.has('botlar')) { %>
+       <% if (bot.ayar.has(`kbotlar.${user.id}`)) { %>   
+
+<%for(var i = 0; i < Object.keys(bot.ayar.fetch('botlar')).length; i++) {%>
+<% var idd = Object.keys(bot.ayar.fetch('botlar'))[i] %>
+ <%  if (bot.ayar.fetch(`botlar.${idd}.sahipid`) === user.id) { %>
+  <div class="col-12 col-sm-6 col-md-4">
+        <div class="card card-lg botcard" style="background-color:#fff; width:16rem;">
+     <div align="center" class="card-img">
+         <a href="/bot/<%=idd%>"><img src="<%=bot.ayar.fetch(`botlar.${idd}.avatar`)%>" class="card-img-top" alt="Bot Avatar"></a>
+       <% if (bot.ayar.has(`botlar.${idd}.sertifika`) === true) { %>
+       <br><br><a style="color:darkorange"><img src="https://i.postimg.cc/SxFNhhJS/xir-sertifika.png" width="30px" height="30px"> Sertifikalı</a><br>
+       <% } %>
+
+      <%  if(bot.ayar.fetch(`botlar.${idd}.durum`) === 'Beklemede' || !bot.ayar.has(`botlar.${idd}.durum`)) { %>
+       <div class="badge badge-warning">Beklemede</div>
+       <% } %>
+
+       <%  if(bot.ayar.fetch(`botlar.${idd}.durum`) === 'Reddedilmiş') { %>
+       <div class="badge badge-danger">Reddedilmiş</div>
+       <% } %>
+
+       <%  if(bot.ayar.fetch(`botlar.${idd}.durum`) === 'Onaylı') { %>
+       <div class="badge badge-success">Onaylanmış</div>
+       <% } %>
+
+       <div class="badge badge-primary"><strong style='color: white;'>Oy: </strong><span style='color:whitesmoke;text-transform: none;'><%=bot.ayar.fetch(`botlar.${idd}.oy`)||0%></span></div>
+                    <div style="background-color:grey; color:#fff" class="badge badge-default"><%=bot.ayar.fetch(`botlar.${idd}.kutuphane`)%></div>
+                            </div>
+                             <div align="center" style="background-color:#fff" class="card-block">
+                                <div class="card-title">
+                                  <h4><a style="color:#222"><%=bot.useful.seg(bot.ayar.fetch(`botlar.${idd}.isim`), 5)%></a></h4>
+                                <h6 style="font-size:17px; color:#222"><%=bot.ayar.fetch(`botlar.${idd}.sahip`)%></h6></div>         
+                        
+                              <p class="card-text" style="color:#222"><%=bot.ayar.fetch(`botlar.${idd}.kisaaciklama`)%></p>
+                               <hr>
+                               <h6 align="center"><a href="/bot/<%=idd%>" style="font-size:20px; color:#222; background-color:#fff">Görüntüle</a> <b style="color:grey">|</b> 
+                                <a href="/kullanici/<%=user.id%>/duzenle/<%=idd%>" style="font-size:20px; color:#222; background-color:#fff">Düzenle</a> <b style="color:grey">|</b> 
+                                <a href="/kullanici/<%=user.id%>/sil/<%=idd%>" style="font-size:20px; color:#222; background-color:#fff">Sil</a></h6>                          
+                            </div>
+                       </div><br>
+   </div>
+<% } %>
+  <% } %>
+</div>
+      
+      <% } else if (!bot.ayar.has(`kbotlar.${user.id}`)) {%>
+           <h5 style="color:#222">
+             Sistemde hiç sana ait bot bulunmuyor.
+      </h5>
+      <% } %>
+      <% } else if (!bot.ayar.has('botlar')) {%>
+           <h5 style="color:#222">
+             Sistemde hiç bot bulunmuyor.
+      </h5>
+      <% } %>
+      
+</div>
+</div></div>
+<% include ./ek/footer %>
